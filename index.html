@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Puput Navilda | Academic Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet"
+    >
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+        <div class="brand">
+            <div class="brand-logo">P</div>
+
+            <div>
+                <h2>Puput.</h2>
+                <p>Academic Space</p>
+            </div>
+        </div>
+
+        <div class="menu-label">
+            MENU
+        </div>
+
+        <nav>
+
+            <button class="nav-item active" data-page="home">
+                <span>⌂</span>
+                <b>Beranda</b>
+            </button>
+
+            <button class="nav-item" data-page="materi">
+                <span>▤</span>
+                <b>Materi</b>
+            </button>
+
+            <button class="nav-item" data-page="tugas">
+                <span>✓</span>
+                <b>Tugas</b>
+            </button>
+
+            <button class="nav-item" data-page="project">
+                <span>◇</span>
+                <b>Project</b>
+            </button>
+
+            <button class="nav-item" data-page="profil">
+                <span>○</span>
+                <b>Profil</b>
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <div class="sidebar-user">
+                <div class="user-avatar">P</div>
+
+                <div>
+                    <strong>Puput Navilda</strong>
+                    <small>240511195</small>
+                </div>
+            </div>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- TOPBAR -->
+        <header class="topbar">
+
+            <div>
+                <small>UNIVERSITAS MUHAMMADIYAH CIREBON</small>
+                <h1 id="pageTitle">Beranda</h1>
+            </div>
+
+            <button
+                class="theme-button"
+                id="themeButton"
+                title="Mode gelap"
+            >
+                ☼
+            </button>
+
+        </header>
+
+
+        <!-- ================= BERANDA ================= -->
+
+        <section class="page active" id="home">
+
+            <div class="hero">
+
+                <div class="hero-content">
+
+                    <span class="hero-tag">
+                        ✦ ACADEMIC DASHBOARD
+                    </span>
+
+                    <h2>
+                        Halo, <strong>Puput!</strong>
+                    </h2>
+
+                    <p>
+                        Kelola materi, tugas, dan project
+                        perkuliahanmu dengan lebih mudah
+                        dalam satu tempat.
+                    </p>
+
+                    <button
+                        class="main-button"
+                        onclick="openPage('materi')"
+                    >
+                        Mulai Kelola
+                        <span>→</span>
+                    </button>
+
+                </div>
+
+
+                <div class="hero-visual">
+
+                    <div class="decor decor-1"></div>
+                    <div class="decor decor-2"></div>
+                    <div class="decor decor-3"></div>
+
+                    <div class="profile-card">
+
+                        <div class="profile-card-top">
+                            <span>STUDENT</span>
+                            <span>2026</span>
+                        </div>
+
+                        <div class="profile-avatar">
+                            P
+                        </div>
+
+                        <h3>Puput Navilda</h3>
+
+                        <p>Teknik Informatika</p>
+
+                        <div class="profile-line"></div>
+
+                        <div class="profile-number">
+                            <small>Nomor Induk Mahasiswa</small>
+                            <strong>240511195</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATISTIK -->
+
+            <div class="section-heading">
+
+                <div>
+                    <small>OVERVIEW</small>
+                    <h2>Ringkasan Akademik</h2>
+                </div>
+
+            </div>
+
+
+            <div class="stats">
+
+                <button
+                    class="stat-card purple"
+                    onclick="openPage('materi')"
+                >
+
+                    <div class="stat-icon">
+                        ▤
+                    </div>
+
+                    <div class="stat-info">
+                        <span>MATERI</span>
+                        <strong id="materiCount">0</strong>
+                        <p>tersimpan</p>
+                    </div>
+
+                    <div class="stat-arrow">
+                        →
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="stat-card blue"
+                    onclick="openPage('tugas')"
+                >
+
+                    <div class="stat-icon">
+                        ✓
+                    </div>
+
+                    <div class="stat-info">
+                        <span>TUGAS</span>
+                        <strong id="tugasCount">0</strong>
+                        <p>selesai</p>
+                    </div>
+
+                    <div class="stat-arrow">
+                        →
+                    </div>
+
+                </button>
+
+
+                <button
+                    class="stat-card orange"
+                    onclick="openPage('project')"
+                >
+
+                    <div class="stat-icon">
+                        ◇
+                    </div>
+
+                    <div class="stat-info">
+                        <span>PROJECT</span>
+                        <strong id="projectCount">0</strong>
+                        <p>tersimpan</p>
+                    </div>
+
+                    <div class="stat-arrow">
+                        →
+                    </div>
+
+                </button>
+
+            </div>
+
+
+            <!-- BAGIAN BAWAH -->
+
+            <div class="dashboard-bottom">
+
+                <div class="activity-box">
+
+                    <div class="box-heading">
+
+                        <div>
+                            <small>RECENT</small>
+                            <h2>Aktivitas Terbaru</h2>
+                        </div>
+
+                    </div>
+
+                    <div id="activityList">
+
+                        <div class="empty">
+                            <div class="empty-symbol">✦</div>
+
+                            <h3>Belum ada aktivitas</h3>
+
+                            <p>
+                                Aktivitas akan muncul otomatis
+                                setelah kamu menambahkan data.
+                            </p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="identity-box">
+
+                    <div class="identity-star">
+                        ✦
+                    </div>
+
+                    <small>MY UNIVERSITY</small>
+
+                    <h2>
+                        Universitas<br>
+                        Muhammadiyah<br>
+                        Cirebon.
+                    </h2>
+
+                    <div class="identity-footer">
+
+                        <span>Teknik Informatika</span>
+
+                        <strong>240511195</strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ================= MATERI ================= -->
+
+        <section class="page" id="materi">
+
+            <div class="page-heading">
+
+                <div>
+                    <small>ACADEMIC / 01</small>
+
+                    <h2>Materi</h2>
+
+                    <p>
+                        Simpan materi perkuliahan
+                        dan buka kembali kapan saja.
+                    </p>
+                </div>
+
+                <button
+                    class="main-button"
+                    onclick="openModal('materi')"
+                >
+                    + Tambah Materi
+                </button>
+
+            </div>
+
+
+            <div class="search-box">
+
+                <span>⌕</span>
+
+                <input
+                    type="text"
+                    id="materiSearch"
+                    placeholder="Cari materi..."
+                >
+
+            </div>
+
+
+            <div
+                id="materiList"
+                class="data-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- ================= TUGAS ================= -->
+
+        <section class="page" id="tugas">
+
+            <div class="page-heading">
+
+                <div>
+                    <small>ACADEMIC / 02</small>
+
+                    <h2>Tugas</h2>
+
+                    <p>
+                        Simpan tugas yang sudah
+                        kamu kerjakan.
+                    </p>
+                </div>
+
+                <button
+                    class="main-button"
+                    onclick="openModal('tugas')"
+                >
+                    + Tambah Tugas
+                </button>
+
+            </div>
+
+
+            <div
+                id="tugasList"
+                class="data-grid"
+            ></div>
+
+        </section>
+
+
+        <!-- ================= PROJECT ================= -->
+
+        <section class="page" id="project">
+
+            <div class="page-heading">
+
+                <div>
+                    <small>ACADEMIC / 03</small>
+
+                    <h2>Project</h2>
+
+                    <p>
+                        Simpan dan dokumentasikan
+                        project yang kamu buat.
+                    </p>
+                </div>
+
+                <button
+                    class="main-button"
+                    onclick="openModal('project')"
+                >
+                    + Tambah Project
+                </button>
+
+            </div>
+
+
+            <div
+                id="projectList"
+                class="data-grid project-list"
+            ></div>
+
+        </section>
+
+
+        <!-- ================= PROFIL ================= -->
+
+        <section class="page" id="profil">
+
+            <div class="profile-page">
+
+                <small>PROFILE / 04</small>
+
+                <h2>
+                    Puput<br>
+                    <span>Navilda.</span>
+                </h2>
+
+                <p>
+                    Mahasiswa Program Studi Teknik Informatika
+                    di Universitas Muhammadiyah Cirebon.
+                </p>
+
+
+                <div class="profile-information">
+
+                    <div>
+                        <small>Nama</small>
+                        <strong>Puput Navilda</strong>
+                    </div>
+
+                    <div>
+                        <small>Nomor Induk Mahasiswa</small>
+                        <strong>240511195</strong>
+                    </div>
+
+                    <div>
+                        <small>Program Studi</small>
+                        <strong>Teknik Informatika</strong>
+                    </div>
+
+                    <div>
+                        <small>Universitas</small>
+                        <strong>
+                            Universitas Muhammadiyah Cirebon
+                        </strong>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div
+        class="modal"
+        id="modal"
+    >
+
+        <div class="modal-content">
+
+            <button
+                class="close-button"
+                onclick="closeModal()"
+            >
+                ×
+            </button>
+
+            <small id="modalLabel">
+                DATA
+            </small>
+
+            <h2 id="modalTitle">
+                Tambah Data
+            </h2>
+
+
+            <form id="dataForm">
+
+                <input
+                    type="hidden"
+                    id="editId"
+                >
+
+                <input
+                    type="hidden"
+                    id="editType"
+                >
+
+
+                <label>
+                    Nama / Judul
+
+                    <input
+                        type="text"
+                        id="dataName"
+                        placeholder="Masukkan nama atau judul"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Keterangan
+
+                    <input
+                        type="text"
+                        id="dataDescription"
+                        placeholder="Contoh: Pertemuan 1"
+                    >
+                </label>
+
+
+                <label>
+                    Tanggal
+
+                    <input
+                        type="date"
+                        id="dataDate"
+                        required
+                    >
+                </label>
+
+
+                <label>
+                    Link
+
+                    <input
+                        type="url"
+                        id="dataLink"
+                        placeholder="https://..."
+                    >
+
+                    <small>
+                        Opsional. Bisa digunakan untuk
+                        Google Drive, GitHub, website, dll.
+                    </small>
+                </label>
+
+
+                <label>
+                    File Materi / Tugas
+
+                    <input
+                        type="file"
+                        id="dataFile"
+                        accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.zip,.rar"
+                    >
+
+                    <small>
+                        File akan tersimpan di browser ini.
+                    </small>
+                </label>
+
+
+                <div class="form-buttons">
+
+                    <button
+                        type="button"
+                        class="cancel-button"
+                        onclick="closeModal()"
+                    >
+                        Batal
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="save-button"
+                    >
+                        Simpan
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
