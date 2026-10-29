@@ -1,618 +1,438 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Puput Navilda | Academic Dashboard</title>
-
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet"
-    >
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#5b1835">
+  <meta name="description" content="Puput Academic Space - Dashboard akademik">
+  <title>Puput Academic Space</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="script.js"></script>
 </head>
-
 <body>
 
-    <!-- SIDEBAR -->
-    <aside class="sidebar">
-
-        <div class="brand">
-            <div class="brand-logo">P</div>
-
-            <div>
-                <h2>Puput.</h2>
-                <p>Academic Space</p>
-            </div>
-        </div>
-
-        <div class="menu-label">
-            MENU
-        </div>
-
-        <nav>
-
-            <button class="nav-item active" data-page="home">
-                <span>⌂</span>
-                <b>Beranda</b>
-            </button>
-
-            <button class="nav-item" data-page="materi">
-                <span>▤</span>
-                <b>Materi</b>
-            </button>
-
-            <button class="nav-item" data-page="tugas">
-                <span>✓</span>
-                <b>Tugas</b>
-            </button>
-
-            <button class="nav-item" data-page="project">
-                <span>◇</span>
-                <b>Project</b>
-            </button>
-
-            <button class="nav-item" data-page="profil">
-                <span>○</span>
-                <b>Profil</b>
-            </button>
-
-        </nav>
-
-        <div class="sidebar-bottom">
-
-            <div class="sidebar-user">
-                <div class="user-avatar">P</div>
-
-                <div>
-                    <strong>Puput Navilda</strong>
-                    <small>240511195</small>
-                </div>
-            </div>
-
-        </div>
-
-    </aside>
-
-
-    <!-- MAIN -->
-    <main class="main">
-
-        <!-- TOPBAR -->
-        <header class="topbar">
-
-            <div>
-                <small>UNIVERSITAS MUHAMMADIYAH CIREBON</small>
-                <h1 id="pageTitle">Beranda</h1>
-            </div>
-
-            <button
-                class="theme-button"
-                id="themeButton"
-                title="Mode gelap"
-            >
-                ☼
-            </button>
-
-        </header>
-
-
-        <!-- ================= BERANDA ================= -->
-
-        <section class="page active" id="home">
-
-            <div class="hero">
-
-                <div class="hero-content">
-
-                    <span class="hero-tag">
-                        ✦ ACADEMIC DASHBOARD
-                    </span>
-
-                    <h2>
-                        Halo, <strong>Puput!</strong>
-                    </h2>
-
-                    <p>
-                        Kelola materi, tugas, dan project
-                        perkuliahanmu dengan lebih mudah
-                        dalam satu tempat.
-                    </p>
-
-                    <button
-                        class="main-button"
-                        onclick="openPage('materi')"
-                    >
-                        Mulai Kelola
-                        <span>→</span>
-                    </button>
-
-                </div>
-
-
-                <div class="hero-visual">
-
-                    <div class="decor decor-1"></div>
-                    <div class="decor decor-2"></div>
-                    <div class="decor decor-3"></div>
-
-                    <div class="profile-card">
-
-                        <div class="profile-card-top">
-                            <span>STUDENT</span>
-                            <span>2026</span>
-                        </div>
-
-                        <div class="profile-avatar">
-                            P
-                        </div>
-
-                        <h3>Puput Navilda</h3>
-
-                        <p>Teknik Informatika</p>
-
-                        <div class="profile-line"></div>
-
-                        <div class="profile-number">
-                            <small>Nomor Induk Mahasiswa</small>
-                            <strong>240511195</strong>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-
-            <!-- STATISTIK -->
-
-            <div class="section-heading">
-
-                <div>
-                    <small>OVERVIEW</small>
-                    <h2>Ringkasan Akademik</h2>
-                </div>
-
-            </div>
-
-
-            <div class="stats">
-
-                <button
-                    class="stat-card purple"
-                    onclick="openPage('materi')"
-                >
-
-                    <div class="stat-icon">
-                        ▤
-                    </div>
-
-                    <div class="stat-info">
-                        <span>MATERI</span>
-                        <strong id="materiCount">0</strong>
-                        <p>tersimpan</p>
-                    </div>
-
-                    <div class="stat-arrow">
-                        →
-                    </div>
-
-                </button>
-
-
-                <button
-                    class="stat-card blue"
-                    onclick="openPage('tugas')"
-                >
-
-                    <div class="stat-icon">
-                        ✓
-                    </div>
-
-                    <div class="stat-info">
-                        <span>TUGAS</span>
-                        <strong id="tugasCount">0</strong>
-                        <p>selesai</p>
-                    </div>
-
-                    <div class="stat-arrow">
-                        →
-                    </div>
-
-                </button>
-
-
-                <button
-                    class="stat-card orange"
-                    onclick="openPage('project')"
-                >
-
-                    <div class="stat-icon">
-                        ◇
-                    </div>
-
-                    <div class="stat-info">
-                        <span>PROJECT</span>
-                        <strong id="projectCount">0</strong>
-                        <p>tersimpan</p>
-                    </div>
-
-                    <div class="stat-arrow">
-                        →
-                    </div>
-
-                </button>
-
-            </div>
-
-
-            <!-- BAGIAN BAWAH -->
-
-            <div class="dashboard-bottom">
-
-                <div class="activity-box">
-
-                    <div class="box-heading">
-
-                        <div>
-                            <small>RECENT</small>
-                            <h2>Aktivitas Terbaru</h2>
-                        </div>
-
-                    </div>
-
-                    <div id="activityList">
-
-                        <div class="empty">
-                            <div class="empty-symbol">✦</div>
-
-                            <h3>Belum ada aktivitas</h3>
-
-                            <p>
-                                Aktivitas akan muncul otomatis
-                                setelah kamu menambahkan data.
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-
-                <div class="identity-box">
-
-                    <div class="identity-star">
-                        ✦
-                    </div>
-
-                    <small>MY UNIVERSITY</small>
-
-                    <h2>
-                        Universitas<br>
-                        Muhammadiyah<br>
-                        Cirebon.
-                    </h2>
-
-                    <div class="identity-footer">
-
-                        <span>Teknik Informatika</span>
-
-                        <strong>240511195</strong>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- ================= MATERI ================= -->
-
-        <section class="page" id="materi">
-
-            <div class="page-heading">
-
-                <div>
-                    <small>ACADEMIC / 01</small>
-
-                    <h2>Materi</h2>
-
-                    <p>
-                        Simpan materi perkuliahan
-                        dan buka kembali kapan saja.
-                    </p>
-                </div>
-
-                <button
-                    class="main-button"
-                    onclick="openModal('materi')"
-                >
-                    + Tambah Materi
-                </button>
-
-            </div>
-
-
-            <div class="search-box">
-
-                <span>⌕</span>
-
-                <input
-                    type="text"
-                    id="materiSearch"
-                    placeholder="Cari materi..."
-                >
-
-            </div>
-
-
-            <div
-                id="materiList"
-                class="data-grid"
-            ></div>
-
-        </section>
-
-
-        <!-- ================= TUGAS ================= -->
-
-        <section class="page" id="tugas">
-
-            <div class="page-heading">
-
-                <div>
-                    <small>ACADEMIC / 02</small>
-
-                    <h2>Tugas</h2>
-
-                    <p>
-                        Simpan tugas yang sudah
-                        kamu kerjakan.
-                    </p>
-                </div>
-
-                <button
-                    class="main-button"
-                    onclick="openModal('tugas')"
-                >
-                    + Tambah Tugas
-                </button>
-
-            </div>
-
-
-            <div
-                id="tugasList"
-                class="data-grid"
-            ></div>
-
-        </section>
-
-
-        <!-- ================= PROJECT ================= -->
-
-        <section class="page" id="project">
-
-            <div class="page-heading">
-
-                <div>
-                    <small>ACADEMIC / 03</small>
-
-                    <h2>Project</h2>
-
-                    <p>
-                        Simpan dan dokumentasikan
-                        project yang kamu buat.
-                    </p>
-                </div>
-
-                <button
-                    class="main-button"
-                    onclick="openModal('project')"
-                >
-                    + Tambah Project
-                </button>
-
-            </div>
-
-
-            <div
-                id="projectList"
-                class="data-grid project-list"
-            ></div>
-
-        </section>
-
-
-        <!-- ================= PROFIL ================= -->
-
-        <section class="page" id="profil">
-
-            <div class="profile-page">
-
-                <small>PROFILE / 04</small>
-
-                <h2>
-                    Puput<br>
-                    <span>Navilda.</span>
-                </h2>
-
-                <p>
-                    Mahasiswa Program Studi Teknik Informatika
-                    di Universitas Muhammadiyah Cirebon.
-                </p>
-
-
-                <div class="profile-information">
-
-                    <div>
-                        <small>Nama</small>
-                        <strong>Puput Navilda</strong>
-                    </div>
-
-                    <div>
-                        <small>Nomor Induk Mahasiswa</small>
-                        <strong>240511195</strong>
-                    </div>
-
-                    <div>
-                        <small>Program Studi</small>
-                        <strong>Teknik Informatika</strong>
-                    </div>
-
-                    <div>
-                        <small>Universitas</small>
-                        <strong>
-                            Universitas Muhammadiyah Cirebon
-                        </strong>
-                    </div>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- ================= MODAL ================= -->
-
-    <div
-        class="modal"
-        id="modal"
-    >
-
-        <div class="modal-content">
-
-            <button
-                class="close-button"
-                onclick="closeModal()"
-            >
-                ×
-            </button>
-
-            <small id="modalLabel">
-                DATA
-            </small>
-
-            <h2 id="modalTitle">
-                Tambah Data
-            </h2>
-
-
-            <form id="dataForm">
-
-                <input
-                    type="hidden"
-                    id="editId"
-                >
-
-                <input
-                    type="hidden"
-                    id="editType"
-                >
-
-
-                <label>
-                    Nama / Judul
-
-                    <input
-                        type="text"
-                        id="dataName"
-                        placeholder="Masukkan nama atau judul"
-                        required
-                    >
-                </label>
-
-
-                <label>
-                    Keterangan
-
-                    <input
-                        type="text"
-                        id="dataDescription"
-                        placeholder="Contoh: Pertemuan 1"
-                    >
-                </label>
-
-
-                <label>
-                    Tanggal
-
-                    <input
-                        type="date"
-                        id="dataDate"
-                        required
-                    >
-                </label>
-
-
-                <label>
-                    Link
-
-                    <input
-                        type="url"
-                        id="dataLink"
-                        placeholder="https://..."
-                    >
-
-                    <small>
-                        Opsional. Bisa digunakan untuk
-                        Google Drive, GitHub, website, dll.
-                    </small>
-                </label>
-
-
-                <label>
-                    File Materi / Tugas
-
-                    <input
-                        type="file"
-                        id="dataFile"
-                        accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.zip,.rar"
-                    >
-
-                    <small>
-                        File akan tersimpan di browser ini.
-                    </small>
-                </label>
-
-
-                <div class="form-buttons">
-
-                    <button
-                        type="button"
-                        class="cancel-button"
-                        onclick="closeModal()"
-                    >
-                        Batal
-                    </button>
-
-                    <button
-                        type="submit"
-                        class="save-button"
-                    >
-                        Simpan
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-
+  <!-- HALAMAN LOGIN -->
+  <section id="loginPage" class="login-page hidden">
+    <div class="login-art">
+      <div class="login-brand">
+        <div class="logo">✦</div>
+        <div>Puput.<small>Academic Space</small></div>
+      </div>
+
+      <p class="login-quote">
+        Setiap proses belajar membawa kita selangkah lebih dekat pada tujuan. ✦
+      </p>
+
+      <div class="window-scene">
+        <div class="moon"></div>
+        <div class="mountain mountain-one"></div>
+        <div class="mountain mountain-two"></div>
+        <div class="plant-one">♧</div>
+        <div class="vase"></div>
+        <div class="book-stack"><i></i><i></i><i></i></div>
+      </div>
+
+      <div class="art-bottom">SIMPLE · ELEGANT · PRODUCTIVE</div>
     </div>
 
+    <div class="login-panel">
+      <div class="login-form-wrap">
+        <div class="mobile-brand">✦ Puput Academic Space</div>
 
-    <script src="script.js"></script>
+        <p class="eyebrow">AKSES PEMILIK</p>
+        <h1>Selamat Datang!</h1>
+        <p class="muted">
+          Login untuk mengelola materi, tugas, dan project akademik.
+        </p>
 
+        <form id="loginForm">
+          <label for="email">
+            Email
+            <span class="input-wrap">
+              <span>✉</span>
+              <input id="email" type="email"
+                placeholder="Masukkan email kamu"
+                autocomplete="username" required>
+            </span>
+          </label>
+
+          <label for="password">
+            Password
+            <span class="input-wrap">
+              <span>♙</span>
+              <input id="password" type="password"
+                placeholder="Masukkan password"
+                autocomplete="current-password" required>
+            </span>
+          </label>
+
+          <div class="login-options">
+            <label class="remember">
+              <input type="checkbox" id="showPassword">
+              Lihat password
+            </label>
+            <span class="tiny-text">Khusus pemilik</span>
+          </div>
+
+          <button type="submit" class="btn btn-primary full">
+            Login
+          </button>
+
+          <p id="loginMessage" class="message" aria-live="polite"></p>
+        </form>
+
+        <div class="login-divider">atau</div>
+
+        <button type="button" id="viewDashboard" class="btn btn-outline full">
+          Lihat Dashboard Publik
+        </button>
+
+        <p class="login-foot">
+          ✦ Hanya pemilik yang dapat mengelola konten.<br>
+          Dosen dan pengunjung dapat melihat konten yang dipublikasikan.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DASHBOARD -->
+  <div id="dashboard" class="dashboard">
+    <aside class="sidebar">
+      <div class="side-brand">
+        <div class="brand-icon">✦</div>
+        <div>Puput.<small>Academic Space</small></div>
+      </div>
+
+      <p class="side-caption">MENU UTAMA</p>
+
+      <nav id="navigation">
+        <button class="nav-item active" data-page="beranda">
+          <span>⌂</span> Beranda
+        </button>
+        <button class="nav-item" data-page="materi">
+          <span>▤</span> Materi
+        </button>
+        <button class="nav-item" data-page="tugas">
+          <span>✓</span> Tugas
+        </button>
+        <button class="nav-item" data-page="project">
+          <span>◇</span> Project
+        </button>
+        <button class="nav-item" data-page="profil">
+          <span>♡</span> Profil
+        </button>
+      </nav>
+
+      <div class="side-user">
+        <div class="user-avatar">PN</div>
+        <div>
+          <strong>Puput Navilda</strong>
+          <small>Mahasiswa TI</small>
+        </div>
+        <button id="sideLogin" class="user-action"
+          type="button" title="Login pengelola">↗</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">UNIVERSITAS MUHAMMADIYAH CIREBON</p>
+          <h2 id="pageTitle">Beranda</h2>
+        </div>
+
+        <div class="top-actions">
+          <label class="search-box">
+            <span>⌕</span>
+            <input id="searchInput" type="search"
+              placeholder="Cari materi, tugas, atau project...">
+          </label>
+          <button id="themeButton" class="round-button"
+            type="button" title="Ganti tampilan">☼</button>
+          <button id="topLogin" class="btn btn-outline" type="button">
+            Login Pengelola
+          </button>
+        </div>
+      </header>
+
+      <!-- BERANDA -->
+      <section id="page-beranda" class="page active">
+        <div class="welcome-banner">
+          <div class="welcome-text">
+            <span class="banner-tag">RUANG BELAJAR DIGITAL</span>
+            <h1>Halo, Puput!</h1>
+            <p>
+              Kelola materi, tugas, dan project perjalananmu
+              dengan lebih mudah dalam satu tempat.
+            </p>
+            <button class="btn btn-pink" type="button" data-go="materi">
+              Mulai Belajar <span>→</span>
+            </button>
+          </div>
+
+          <div class="banner-illustration" aria-hidden="true">
+            <span class="sparkle">✦</span>
+            <div class="desk-laptop">
+              <div class="laptop-screen">P.</div>
+              <div class="laptop-base"></div>
+            </div>
+            <div class="plant-illustration">♧</div>
+            <span class="heart-doodle">♡</span>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">OVERVIEW</p>
+            <h3>Ringkasan Akademik</h3>
+          </div>
+        </div>
+
+        <div class="summary-grid">
+          <div class="summary-card">
+            <div class="summary-icon pink-bg">▤</div>
+            <div><small>Total Materi</small><strong id="totalMateri">0</strong></div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon mauve-bg">✓</div>
+            <div><small>Total Tugas</small><strong id="totalTugas">0</strong></div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon rose-bg">▱</div>
+            <div><small>Total Project</small><strong id="totalProject">0</strong></div>
+          </div>
+          <div class="summary-card">
+            <div class="summary-icon lavender-bg">☁</div>
+            <div><small>Total File</small><strong id="totalFiles">0</strong></div>
+          </div>
+        </div>
+
+        <div class="connection-note">
+          <div class="summary-icon pink-bg">♙</div>
+          <div>
+            <strong id="connectionTitle">Dashboard akademik</strong>
+            <p id="connectionText">
+              Pengunjung dapat melihat konten publik. Login diperlukan untuk mengelola konten.
+            </p>
+          </div>
+          <span class="connection-mark">✦</span>
+        </div>
+
+        <div class="section-head recent-head">
+          <div>
+            <p class="eyebrow">PEMBARUAN</p>
+            <h3>Konten Terbaru</h3>
+          </div>
+          <button class="text-link" type="button" data-go="materi">
+            Lihat semua →
+          </button>
+        </div>
+
+        <div id="recentItems" class="content-grid"></div>
+      </section>
+
+      <!-- MATERI -->
+      <section id="page-materi" class="page">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">RUANG BELAJAR</p>
+            <h1>Materi Kuliah</h1>
+            <p>Kumpulan materi dan referensi pembelajaran.</p>
+          </div>
+          <button class="btn btn-primary owner-only hidden"
+            type="button" data-add="materi">+ Tambah Materi</button>
+        </div>
+        <div id="materiItems" class="content-grid"></div>
+      </section>
+
+      <!-- TUGAS -->
+      <section id="page-tugas" class="page">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">DAFTAR PEKERJAAN</p>
+            <h1>Tugas Kuliah</h1>
+            <p>Catatan tugas, tanggal, file, dan status pengerjaan.</p>
+          </div>
+          <button class="btn btn-primary owner-only hidden"
+            type="button" data-add="tugas">+ Tambah Tugas</button>
+        </div>
+        <div id="tugasItems" class="task-list"></div>
+      </section>
+
+      <!-- PROJECT -->
+      <section id="page-project" class="page">
+        <div class="page-heading">
+          <div>
+            <p class="eyebrow">KARYA DAN PORTOFOLIO</p>
+            <h1>Project</h1>
+            <p>Kumpulan project dan hasil pengembangan.</p>
+          </div>
+          <button class="btn btn-primary owner-only hidden"
+            type="button" data-add="project">+ Tambah Project</button>
+        </div>
+        <div id="projectItems" class="content-grid project-grid"></div>
+      </section>
+
+      <!-- PROFIL TANPA KONSENTRASI -->
+      <section id="page-profil" class="page">
+        <p class="eyebrow">TENTANG SAYA</p>
+        <h1 class="profile-title">Profil Saya</h1>
+
+        <div class="profile-layout">
+          <div class="profile-card">
+            <div class="profile-cover-art">
+              <div class="profile-avatar-large">P</div>
+            </div>
+            <h2>Puput Navilda</h2>
+            <p class="profile-id">240511195</p>
+            <p>Mahasiswa Teknik Informatika</p>
+          </div>
+
+          <div class="profile-info">
+            <p class="eyebrow">INFORMASI AKADEMIK</p>
+            <h3>Informasi Akademik</h3>
+
+            <div class="info-row">
+              <span>Nama</span>
+              <strong>Puput Navilda</strong>
+            </div>
+            <div class="info-row">
+              <span>Nomor Induk Mahasiswa</span>
+              <strong>240511195</strong>
+            </div>
+            <div class="info-row">
+              <span>Program Studi</span>
+              <strong>Teknik Informatika</strong>
+            </div>
+            <div class="info-row">
+              <span>Universitas</span>
+              <strong>Universitas Muhammadiyah Cirebon</strong>
+            </div>
+
+            <div class="security-box">
+              <strong>Pengelolaan Dashboard</strong>
+              <p>
+                Pengelolaan konten hanya diperuntukkan bagi pemilik akun.
+                Pengunjung dapat melihat konten yang dipublikasikan.
+              </p>
+              <button id="profileLogin" class="btn btn-outline" type="button">
+                Login / Keluar Akun
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        © 2026 Puput Academic Space · Belajar, bertumbuh, dan berkarya.
+      </footer>
+    </main>
+  </div>
+
+  <!-- FORM TAMBAH / EDIT -->
+  <div id="itemModal" class="modal-overlay hidden">
+    <div class="modal">
+      <button class="modal-close" type="button"
+        data-close="itemModal" aria-label="Tutup">&times;</button>
+
+      <p class="eyebrow">KELOLA KONTEN</p>
+      <h2 id="modalTitle">Tambah Konten</h2>
+
+      <form id="itemForm">
+        <input id="itemId" type="hidden">
+
+        <label for="itemType">
+          Jenis Konten
+          <select id="itemType" required>
+            <option value="materi">Materi</option>
+            <option value="tugas">Tugas</option>
+            <option value="project">Project</option>
+          </select>
+        </label>
+
+        <label for="itemName">
+          Judul
+          <input id="itemName" type="text"
+            placeholder="Masukkan judul konten" required maxlength="150">
+        </label>
+
+        <label for="itemDescription">
+          Deskripsi
+          <textarea id="itemDescription" rows="3"
+            placeholder="Tuliskan deskripsi konten"></textarea>
+        </label>
+
+        <div class="form-row">
+          <label for="itemDate">
+            Tanggal
+            <input id="itemDate" type="date">
+          </label>
+
+          <label for="itemStatus">
+            Status
+            <select id="itemStatus">
+              <option value="Dipublikasikan">Dipublikasikan</option>
+              <option value="Belum">Belum</option>
+              <option value="Sedang dikerjakan">Sedang dikerjakan</option>
+              <option value="Selesai">Selesai</option>
+              <option value="Aktif">Aktif</option>
+              <option value="Draft">Draft</option>
+            </select>
+          </label>
+        </div>
+
+        <label for="itemFile">
+          Upload File (opsional)
+          <input id="itemFile" type="file"
+            accept=".pdf,.doc,.docx,.ppt,.pptx,.png,.jpg,.jpeg,.zip,.txt,.xlsx,.csv">
+        </label>
+        <p class="field-hint">
+          Maksimal 20 MB. Upload memerlukan konfigurasi Supabase Storage.
+        </p>
+
+        <label for="itemLink">
+          Link Materi / Tugas / Project (opsional)
+          <input id="itemLink" type="url" placeholder="https://contoh.com">
+        </label>
+
+        <label class="check-label">
+          <input id="itemPublished" type="checkbox" checked>
+          Tampilkan kepada dosen dan pengunjung
+        </label>
+
+        <p id="itemMessage" class="message" aria-live="polite"></p>
+
+        <button type="submit" class="btn btn-primary full">
+          Simpan Konten
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL INFORMASI -->
+  <div id="infoModal" class="modal-overlay hidden">
+    <div class="modal info-modal">
+      <button class="modal-close" type="button"
+        data-close="infoModal" aria-label="Tutup">&times;</button>
+      <p class="eyebrow">INFORMASI</p>
+      <h2 id="infoTitle">Informasi</h2>
+      <p id="infoText"></p>
+      <button class="btn btn-primary full" type="button" data-close="infoModal">
+        Mengerti
+      </button>
+    </div>
+  </div>
+
+  <script>
+    const showPasswordCheckbox = document.getElementById("showPassword");
+    if (showPasswordCheckbox) {
+      showPasswordCheckbox.addEventListener("change", function () {
+        document.getElementById("password").type =
+          this.checked ? "text" : "password";
+      });
+    }
+  </script>
 </body>
 </html>
